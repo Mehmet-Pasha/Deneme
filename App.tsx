@@ -1,0 +1,29 @@
+import { Route, Routes } from "react-router-dom";
+import { Shell } from "@/components/Shell";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { HomePage } from "@/pages/HomePage";
+import { ResultsPage } from "@/pages/ResultsPage";
+import { HorsePage } from "@/pages/HorsePage";
+import { JockeyPage } from "@/pages/JockeyPage";
+import { PersonPage } from "@/pages/PersonPage";
+import { FavoritesPage } from "@/pages/FavoritesPage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
+
+export function App() {
+  return (
+    <Shell>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/sonuclar" element={<ResultsPage />} />
+          <Route path="/at/:id" element={<HorsePage />} />
+          <Route path="/jokey/:id" element={<JockeyPage />} />
+          <Route path="/kisi/antrenor/:id" element={<PersonPage kind="antrenor" />} />
+          <Route path="/kisi/sahip/:id" element={<PersonPage kind="sahip" />} />
+          <Route path="/favoriler" element={<FavoritesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </ErrorBoundary>
+    </Shell>
+  );
+}
